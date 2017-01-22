@@ -8,9 +8,8 @@ import (
 	"github.com/k0kubun/pp"
 )
 
-var client = esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-
 func TestGetTeamsNoError(t *testing.T) {
+	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
 	res, err := client.GetTeams(&esa.GetTeamsRequest{})
 	if err != nil {
 		t.Error(err)
@@ -19,6 +18,7 @@ func TestGetTeamsNoError(t *testing.T) {
 }
 
 func TestGetTeamNoError(t *testing.T) {
+	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
 	res, err := client.GetTeam("coto-coto")
 	if err != nil {
 		t.Error(err)

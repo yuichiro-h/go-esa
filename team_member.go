@@ -23,8 +23,8 @@ type GetTeamMembersResponse struct {
 	PaginationResponse
 }
 
-func (c *Client) GetTeamMembers(req *GetTeamMembersRequest) (*GetTeamMembersResponse, error) {
-	resp, body, errs := c.setPaginationParams(c.get(fmt.Sprintf("/v1/teams/%s/members", req.TeamName)), &req.PaginationRequest).End()
+func (c *Client) GetTeamMembers(teamName string, req *GetTeamMembersRequest) (*GetTeamMembersResponse, error) {
+	resp, body, errs := c.setPaginationParams(c.get(fmt.Sprintf("/v1/teams/%s/members", teamName)), &req.PaginationRequest).End()
 
 	if len(errs) > 0 {
 		return nil, errs[0]

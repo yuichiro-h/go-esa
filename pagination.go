@@ -16,8 +16,8 @@ type PaginationResponse struct {
 }
 
 type PaginationRequest struct {
-	Page    *int
-	PerPage *int
+	Page    *int `json:"page"`
+	PerPage *int `json:"per_page"`
 }
 
 func (c *Client) setPaginationParams(request *gorequest.SuperAgent, pagination *PaginationRequest) *gorequest.SuperAgent {
