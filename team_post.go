@@ -13,21 +13,29 @@ type PostMember struct {
 }
 
 type Post struct {
-	Number         int        `json:"number"`
-	Name           string     `json:"name"`
-	FullName       string     `json:"full_name"`
-	WIP            bool       `json:"wip"`
-	BodyMD         string     `json:"body_md"`
-	BodyHTML       string     `json:"body_html"`
-	CreatedAt      time.Time  `json:"created_at"`
-	Message        string     `json:"message"`
-	URL            string     `json:"url"`
-	UpdatedAt      time.Time  `json:"updated_at"`
-	Tags           []string   `json:"tags"`
-	Category       string     `json:"category"`
-	RevisionNumber int        `json:"revision_number"`
-	CreatedBy      PostMember `json:"created_by"`
-	UpdatedBy      PostMember `json:"updated_by"`
+	Number          int        `json:"number"`
+	Name            string     `json:"name"`
+	FullName        string     `json:"full_name"`
+	WIP             bool       `json:"wip"`
+	BodyMD          string     `json:"body_md"`
+	BodyHTML        string     `json:"body_html"`
+	CreatedAt       time.Time  `json:"created_at"`
+	Message         string     `json:"message"`
+	URL             string     `json:"url"`
+	UpdatedAt       time.Time  `json:"updated_at"`
+	Tags            []string   `json:"tags"`
+	Category        *string    `json:"category"`
+	RevisionNumber  int        `json:"revision_number"`
+	CreatedBy       PostMember `json:"created_by"`
+	UpdatedBy       PostMember `json:"updated_by"`
+	Kind            string     `json:"kind"`
+	CommentsCount   int        `json:"comments_countr"`
+	TaskCount       int        `json:"task_count"`
+	DoneTasksCount  int        `json:"done_tasks_count"`
+	StargazersCount int        `json:"stargazers_count"`
+	WatchersCount   int        `json:"watchers_count"`
+	Star            bool       `json:"star"`
+	Watch           bool       `json:"watch"`
 }
 
 type GetTeamPostsRequest struct {

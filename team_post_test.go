@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"github.com/CotoCoto/go-esa"
+	"github.com/k0kubun/pp"
 )
 
 func TestGetTeamPostsNoError(t *testing.T) {
@@ -19,7 +20,5 @@ func TestGetTeamPostsNoError(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	for _, p := range res.Posts {
-		t.Log(p.Name)
-	}
+	t.Log(pp.Sprint(res.Posts[0]))
 }

@@ -6,11 +6,11 @@ import (
 )
 
 type Member struct {
-	Name       string `json:"name"`
-	ScreenName string `json:"screen_name"`
-	Icon       string `json:"icon"`
-	Email      string `json:"email"`
-	PostsCount int    `json:"posts_count"`
+	Name       string  `json:"name"`
+	ScreenName string  `json:"screen_name"`
+	Icon       string  `json:"icon"`
+	Email      *string `json:"email"`
+	PostsCount int     `json:"posts_count"`
 }
 
 type GetTeamMembersRequest struct {
