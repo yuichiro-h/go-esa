@@ -70,7 +70,6 @@ func (c *Client) GetTeamPosts(teamName string, req *GetTeamPostsRequest) (*GetTe
 	}
 
 	resp, body, errs := c.setPaginationParams(buildReq, &req.PaginationRequest).End()
-	fmt.Println(body)
 
 	if len(errs) > 0 {
 		return nil, errs[0]
