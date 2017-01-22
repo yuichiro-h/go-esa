@@ -26,7 +26,7 @@ func main() {
 
 -	[x] GET /v1/teams
 -	[x] GET /v1/teams/:team_name
--	[ ] GET /v1/teams/:team_name/stats
+-	[x] GET /v1/teams/:team_name/stats
 -	[ ] GET /v1/teams/:team_name/members
 -	[ ] GET /v1/teams/:team_name/posts
 -	[ ] GET /v1/teams/:team_name/posts/:post_number

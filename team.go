@@ -71,5 +71,4 @@ func (c *Client) GetTeam(teamName string) (*GetTeamResponse, error) {
 	}
 
 	return &res, nil
-
 }
