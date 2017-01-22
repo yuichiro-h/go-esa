@@ -13,29 +13,31 @@ type PostMember struct {
 }
 
 type Post struct {
-	Number          int        `json:"number"`
-	Name            string     `json:"name"`
-	FullName        string     `json:"full_name"`
-	WIP             bool       `json:"wip"`
-	BodyMD          string     `json:"body_md"`
-	BodyHTML        string     `json:"body_html"`
-	CreatedAt       time.Time  `json:"created_at"`
-	Message         string     `json:"message"`
-	URL             string     `json:"url"`
-	UpdatedAt       time.Time  `json:"updated_at"`
-	Tags            []string   `json:"tags"`
-	Category        *string    `json:"category"`
-	RevisionNumber  int        `json:"revision_number"`
-	CreatedBy       PostMember `json:"created_by"`
-	UpdatedBy       PostMember `json:"updated_by"`
-	Kind            string     `json:"kind"`
-	CommentsCount   int        `json:"comments_countr"`
-	TaskCount       int        `json:"task_count"`
-	DoneTasksCount  int        `json:"done_tasks_count"`
-	StargazersCount int        `json:"stargazers_count"`
-	WatchersCount   int        `json:"watchers_count"`
-	Star            bool       `json:"star"`
-	Watch           bool       `json:"watch"`
+	Number          int         `json:"number"`
+	Name            string      `json:"name"`
+	FullName        string      `json:"full_name"`
+	WIP             bool        `json:"wip"`
+	BodyMD          string      `json:"body_md"`
+	BodyHTML        string      `json:"body_html"`
+	CreatedAt       time.Time   `json:"created_at"`
+	Message         string      `json:"message"`
+	URL             string      `json:"url"`
+	UpdatedAt       time.Time   `json:"updated_at"`
+	Tags            []string    `json:"tags"`
+	Category        *string     `json:"category"`
+	RevisionNumber  int         `json:"revision_number"`
+	CreatedBy       PostMember  `json:"created_by"`
+	UpdatedBy       PostMember  `json:"updated_by"`
+	Kind            string      `json:"kind"`
+	CommentsCount   int         `json:"comments_countr"`
+	TaskCount       int         `json:"task_count"`
+	DoneTasksCount  int         `json:"done_tasks_count"`
+	StargazersCount int         `json:"stargazers_count"`
+	WatchersCount   int         `json:"watchers_count"`
+	Star            bool        `json:"star"`
+	Watch           bool        `json:"watch"`
+	Comments        []Comment   `json:"comments"`
+	Stargazers      []Stargazer `json:"stargazers"`
 }
 
 type GetTeamPostsRequest struct {
@@ -68,6 +70,7 @@ func (c *Client) GetTeamPosts(teamName string, req *GetTeamPostsRequest) (*GetTe
 	}
 
 	resp, body, errs := c.setPaginationParams(buildReq, &req.PaginationRequest).End()
+	fmt.Println(body)
 
 	if len(errs) > 0 {
 		return nil, errs[0]

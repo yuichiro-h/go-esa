@@ -11,7 +11,8 @@ import (
 func TestGetTeamPostsNoError(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
 	res, err := client.GetTeamPosts("coto-coto", &esa.GetTeamPostsRequest{
-		Q: esa.String("日報"),
+		Q:       esa.String("日報"),
+		Include: esa.String("comments,stargazers"),
 		PaginationRequest: esa.PaginationRequest{
 			PerPage: esa.Int(10),
 			Page:    esa.Int(5),
