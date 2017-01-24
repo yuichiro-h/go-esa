@@ -53,6 +53,10 @@ type GetTeamPostsResponse struct {
 	PaginationResponse
 }
 
+type GetTeamPostResponse struct {
+	Post
+}
+
 func (c *Client) GetTeamPosts(teamName string, req *GetTeamPostsRequest) (*GetTeamPostsResponse, error) {
 	buildReq := c.get(fmt.Sprintf("/v1/teams/%s/posts", teamName))
 
@@ -80,6 +84,25 @@ func (c *Client) GetTeamPosts(teamName string, req *GetTeamPostsRequest) (*GetTe
 	}
 
 	var res GetTeamPostsResponse
+	if err := json.Unmarshal([]byte(body), &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
+func (c *Client) GetTeamPost(teamName string, number int) (*GetTeamPostResponse, error) {
+	resp, body, errs := c.get(fmt.Sprintf("/v1/teams/%s/posts/%d", teamName, number)).End()
+
+	if len(errs) > 0 {
+		return nil, errs[0]
+	}
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return nil, c.parseError(body)
+	}
+
+	var res GetTeamPostResponse
 	if err := json.Unmarshal([]byte(body), &res); err != nil {
 		return nil, err
 	}

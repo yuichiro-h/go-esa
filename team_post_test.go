@@ -4,8 +4,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/CotoCoto/go-esa"
 	"github.com/k0kubun/pp"
+	"github.com/yuichiro-h/go-esa"
 )
 
 func TestGetTeamPostsNoError(t *testing.T) {
@@ -22,4 +22,13 @@ func TestGetTeamPostsNoError(t *testing.T) {
 		t.Error(err)
 	}
 	t.Log(pp.Sprint(res.Posts[0]))
+}
+
+func TestGetTeamPostNoErro(t *testing.T) {
+	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
+	res, err := client.GetTeamPost("docs", 25)
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(pp.Sprint(res.Post))
 }
