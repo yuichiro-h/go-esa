@@ -90,7 +90,24 @@ func (c *Client) GetTeamPosts(teamName string, req *GetTeamPostsRequest) (*GetTe
 	return &res, nil
 }
 
-<<<<<<< HEAD
+func (c *Client) GetTeamPost(teamName string, number int) (*GetTeamPostResponse, error) {
+	resp, body, errs := c.get(fmt.Sprintf("/v1/teams/%s/posts/%d", teamName, number)).End()
+	if len(errs) > 0 {
+		return nil, errs[0]
+	}
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return nil, c.parseError(body)
+	}
+
+	var res GetTeamPostResponse
+	if err := json.Unmarshal([]byte(body), &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
 type CreateTeamPostRequest struct {
 	Name     string    `json:"name"`
 	BodyMD   *string   `json:"body_md"`
@@ -112,10 +129,6 @@ func (c *Client) CreateTeamPost(teamName string, req *CreateTeamPostRequest) (*C
 		}{
 			Post: req,
 		}).End()
-=======
-func (c *Client) GetTeamPost(teamName string, number int) (*GetTeamPostResponse, error) {
-	resp, body, errs := c.get(fmt.Sprintf("/v1/teams/%s/posts/%d", teamName, number)).End()
->>>>>>> 42ddaf47e5ef749f8606e1167ed2c225f7a71827
 
 	if len(errs) > 0 {
 		return nil, errs[0]
@@ -125,11 +138,7 @@ func (c *Client) GetTeamPost(teamName string, number int) (*GetTeamPostResponse,
 		return nil, c.parseError(body)
 	}
 
-<<<<<<< HEAD
 	var res CreateTeamPostResponse
-=======
-	var res GetTeamPostResponse
->>>>>>> 42ddaf47e5ef749f8606e1167ed2c225f7a71827
 	if err := json.Unmarshal([]byte(body), &res); err != nil {
 		return nil, err
 	}

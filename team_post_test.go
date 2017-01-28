@@ -24,7 +24,15 @@ func TestGetTeamPostsNoError(t *testing.T) {
 	t.Log(pp.Sprint(res.Posts[0]))
 }
 
-<<<<<<< HEAD
+func TestGetTeamPostNoErro(t *testing.T) {
+	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
+	res, err := client.GetTeamPost("docs", 25)
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(pp.Sprint(res.Post))
+}
+
 // func TestCreateTeamPostNoError(t *testing.T) {
 // 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
 // 	res, err := client.CreateTeamPost("coto-coto", &esa.CreateTeamPostRequest{
@@ -41,13 +49,3 @@ func TestGetTeamPostsNoError(t *testing.T) {
 // 	}
 // 	t.Log(pp.Sprint(res))
 // }
-=======
-func TestGetTeamPostNoErro(t *testing.T) {
-	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	res, err := client.GetTeamPost("docs", 25)
-	if err != nil {
-		t.Error(err)
-	}
-	t.Log(pp.Sprint(res.Post))
-}
->>>>>>> 42ddaf47e5ef749f8606e1167ed2c225f7a71827
