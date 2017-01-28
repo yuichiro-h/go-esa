@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/CotoCoto/go-esa"
+	"github.com/yuichiro-h/go-esa"
 )
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 -	[x] GET /v1/teams/:team_name/members
 -	[x] GET /v1/teams/:team_name/posts
 -	[x] GET /v1/teams/:team_name/posts/:post_number
--	[ ] POST /v1/teams/:team_name/posts
+-	[x] POST /v1/teams/:team_name/posts
 -	[ ] PATCH /v1/teams/:team_name/posts/:post_number
 -	[ ] DELETE /v1/teams/:team_name/posts/:post_number
 -	[x] GET /v1/teams/:team_name/posts/:post_number/comments
