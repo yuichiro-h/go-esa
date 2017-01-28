@@ -24,7 +24,7 @@ func TestGetTeamPostsNoError(t *testing.T) {
 	t.Log(pp.Sprint(res.Posts[0]))
 }
 
-func TestGetTeamPostNoErro(t *testing.T) {
+func TestGetTeamPostNoError(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
 	res, err := client.GetTeamPost("docs", 25)
 	if err != nil {

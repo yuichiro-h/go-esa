@@ -35,7 +35,7 @@ func main() {
 -	[ ] DELETE /v1/teams/:team_name/posts/:post_number
 -	[x] GET /v1/teams/:team_name/posts/:post_number/comments
 -	[x] GET /v1/teams/:team_name/comments/:comment_id
--	[ ] POST /v1/teams/:team_name/posts/:post_number/comments
+-	[x] POST /v1/teams/:team_name/posts/:post_number/comments
 -	[ ] PATCH /v1/teams/:team_name/comments/:comment_id
 -	[ ] DELETE /v1/teams/:team_name/comments/:comment_id Star
 -	[ ] GET /v1/teams/:team_name/posts/:post_number/stargazers
