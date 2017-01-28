@@ -33,8 +33,8 @@ func main() {
 -	[x] POST /v1/teams/:team_name/posts
 -	[ ] PATCH /v1/teams/:team_name/posts/:post_number
 -	[ ] DELETE /v1/teams/:team_name/posts/:post_number
--	[ ] GET /v1/teams/:team_name/posts/:post_number/comments
--	[ ] GET /v1/teams/:team_name/comments/:comment_id
+-	[x] GET /v1/teams/:team_name/posts/:post_number/comments
+-	[x] GET /v1/teams/:team_name/comments/:comment_id
 -	[ ] POST /v1/teams/:team_name/posts/:post_number/comments
 -	[ ] PATCH /v1/teams/:team_name/comments/:comment_id
 -	[ ] DELETE /v1/teams/:team_name/comments/:comment_id Star
@@ -47,4 +47,4 @@ func main() {
 -	[ ] GET /v1/teams/:team_name/posts/:post_number/watchers
 -	[ ] POST /v1/teams/:team_name/posts/:post_number/watch
 -	[ ] DELETE /v1/teams/:team_name/posts/:post_number/watch
--	[ ] GET /v1/user
+-	[x] GET /v1/user

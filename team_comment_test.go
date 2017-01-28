@@ -8,9 +8,9 @@ import (
 	"github.com/yuichiro-h/go-esa"
 )
 
-func TestGetTeamStatsNoError(t *testing.T) {
+func TestGetTeamComment(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	res, err := client.GetTeamStats("docs")
+	res, err := client.GetTeamComment("docs", 13)
 	if err != nil {
 		t.Error(err)
 	}
