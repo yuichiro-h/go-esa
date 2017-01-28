@@ -23,25 +23,27 @@ func New(config *Config) *Client {
 }
 
 func (c *Client) get(URI string) *gorequest.SuperAgent {
-	return c.setAuthorizationHeader(gorequest.New().Get(baseURL + URI))
+	return c.setCommonHeader(gorequest.New().Get(baseURL + URI))
 }
 
 func (c *Client) post(URI string) *gorequest.SuperAgent {
-	return c.setAuthorizationHeader(gorequest.New().Post(baseURL + URI))
+	return c.setCommonHeader(gorequest.New().Post(baseURL + URI))
 }
 
 func (c *Client) put(URI string) *gorequest.SuperAgent {
-	return c.setAuthorizationHeader(gorequest.New().Put(baseURL + URI))
+	return c.setCommonHeader(gorequest.New().Put(baseURL + URI))
 }
 
 func (c *Client) delete(URI string) *gorequest.SuperAgent {
-	return c.setAuthorizationHeader(gorequest.New().Delete(baseURL + URI))
+	return c.setCommonHeader(gorequest.New().Delete(baseURL + URI))
 }
 
 func (c *Client) patch(URI string) *gorequest.SuperAgent {
-	return c.setAuthorizationHeader(gorequest.New().Patch(baseURL + URI))
+	return c.setCommonHeader(gorequest.New().Patch(baseURL + URI))
 }
 
-func (c *Client) setAuthorizationHeader(request *gorequest.SuperAgent) *gorequest.SuperAgent {
-	return request.Set("Authorization", fmt.Sprintf("Bearer %s", c.config.AccessToken))
+func (c *Client) setCommonHeader(request *gorequest.SuperAgent) *gorequest.SuperAgent {
+	return request.
+		Set("Authorization", fmt.Sprintf("Bearer %s", c.config.AccessToken)).
+		Set("User-Agent", fmt.Sprintf("go-esa/%s", Version))
 }
