@@ -8,9 +8,9 @@ import (
 	"github.com/yuichiro-h/go-esa"
 )
 
-func TestGetTeamStatsNoError(t *testing.T) {
+func TestGetUser(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	res, err := client.GetTeamStats("coto-coto")
+	res, err := client.GetUser()
 	if err != nil {
 		t.Error(err)
 	}

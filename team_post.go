@@ -53,6 +53,10 @@ type GetTeamPostsResponse struct {
 	PaginationResponse
 }
 
+type GetTeamPostResponse struct {
+	Post
+}
+
 func (c *Client) GetTeamPosts(teamName string, req *GetTeamPostsRequest) (*GetTeamPostsResponse, error) {
 	r := c.get(fmt.Sprintf("/v1/teams/%s/posts", teamName))
 
@@ -86,6 +90,7 @@ func (c *Client) GetTeamPosts(teamName string, req *GetTeamPostsRequest) (*GetTe
 	return &res, nil
 }
 
+<<<<<<< HEAD
 type CreateTeamPostRequest struct {
 	Name     string    `json:"name"`
 	BodyMD   *string   `json:"body_md"`
@@ -107,6 +112,10 @@ func (c *Client) CreateTeamPost(teamName string, req *CreateTeamPostRequest) (*C
 		}{
 			Post: req,
 		}).End()
+=======
+func (c *Client) GetTeamPost(teamName string, number int) (*GetTeamPostResponse, error) {
+	resp, body, errs := c.get(fmt.Sprintf("/v1/teams/%s/posts/%d", teamName, number)).End()
+>>>>>>> 42ddaf47e5ef749f8606e1167ed2c225f7a71827
 
 	if len(errs) > 0 {
 		return nil, errs[0]
@@ -116,7 +125,11 @@ func (c *Client) CreateTeamPost(teamName string, req *CreateTeamPostRequest) (*C
 		return nil, c.parseError(body)
 	}
 
+<<<<<<< HEAD
 	var res CreateTeamPostResponse
+=======
+	var res GetTeamPostResponse
+>>>>>>> 42ddaf47e5ef749f8606e1167ed2c225f7a71827
 	if err := json.Unmarshal([]byte(body), &res); err != nil {
 		return nil, err
 	}

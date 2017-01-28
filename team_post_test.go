@@ -4,18 +4,18 @@ import (
 	"os"
 	"testing"
 
-	"github.com/CotoCoto/go-esa"
 	"github.com/k0kubun/pp"
+	"github.com/yuichiro-h/go-esa"
 )
 
 func TestGetTeamPostsNoError(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	res, err := client.GetTeamPosts("coto-coto", &esa.GetTeamPostsRequest{
-		Q:       esa.String("日報"),
+	res, err := client.GetTeamPosts("docs", &esa.GetTeamPostsRequest{
+		Q:       esa.String("API"),
 		Include: esa.String("comments,stargazers"),
 		PaginationRequest: esa.PaginationRequest{
-			PerPage: esa.Int(10),
-			Page:    esa.Int(5),
+			PerPage: esa.Int(1),
+			Page:    esa.Int(1),
 		},
 	})
 	if err != nil {
@@ -24,6 +24,7 @@ func TestGetTeamPostsNoError(t *testing.T) {
 	t.Log(pp.Sprint(res.Posts[0]))
 }
 
+<<<<<<< HEAD
 // func TestCreateTeamPostNoError(t *testing.T) {
 // 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
 // 	res, err := client.CreateTeamPost("coto-coto", &esa.CreateTeamPostRequest{
@@ -40,3 +41,13 @@ func TestGetTeamPostsNoError(t *testing.T) {
 // 	}
 // 	t.Log(pp.Sprint(res))
 // }
+=======
+func TestGetTeamPostNoErro(t *testing.T) {
+	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
+	res, err := client.GetTeamPost("docs", 25)
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(pp.Sprint(res.Post))
+}
+>>>>>>> 42ddaf47e5ef749f8606e1167ed2c225f7a71827

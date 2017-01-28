@@ -29,7 +29,7 @@ func main() {
 -	[x] GET /v1/teams/:team_name/stats
 -	[x] GET /v1/teams/:team_name/members
 -	[x] GET /v1/teams/:team_name/posts
--	[ ] GET /v1/teams/:team_name/posts/:post_number
+-	[x] GET /v1/teams/:team_name/posts/:post_number
 -	[x] POST /v1/teams/:team_name/posts
 -	[ ] PATCH /v1/teams/:team_name/posts/:post_number
 -	[ ] DELETE /v1/teams/:team_name/posts/:post_number
