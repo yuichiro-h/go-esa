@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/CotoCoto/go-esa"
+	"github.com/yuichiro-h/go-esa"
 )
 
 func main() {
