@@ -7,3 +7,11 @@ func String(v string) *string {
 func Int(v int) *int {
 	return &v
 }
+
+func Bool(v bool) *bool {
+	return &v
+}
+
+func SliceString(v []string) *[]string {
+	return &v
+}
