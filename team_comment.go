@@ -9,8 +9,8 @@ type GetTeamCommentResponse struct {
 	Comment
 }
 
-func (c *Client) GetTeamComment(teamName string, commentId int) (*GetTeamCommentResponse, error) {
-	resp, body, errs := c.get(fmt.Sprintf("/v1/teams/%s/comments/%d", teamName, commentId)).End()
+func (c *Client) GetTeamComment(teamName string, commentID int) (*GetTeamCommentResponse, error) {
+	resp, body, errs := c.get(fmt.Sprintf("/v1/teams/%s/comments/%d", teamName, commentID)).End()
 
 	if len(errs) > 0 {
 		return nil, errs[0]
