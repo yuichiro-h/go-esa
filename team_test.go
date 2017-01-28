@@ -19,7 +19,7 @@ func TestGetTeamsNoError(t *testing.T) {
 
 func TestGetTeamNoError(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	res, err := client.GetTeam("coto-coto")
+	res, err := client.GetTeam("docs")
 	if err != nil {
 		t.Error(err)
 	}
