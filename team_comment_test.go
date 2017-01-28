@@ -10,7 +10,7 @@ import (
 
 func TestGetTeamComment(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	res, err := client.GetTeamComment("docs", 13)
+	res, err := client.GetTeamComment("docs", 12)
 	if err != nil {
 		t.Error(err)
 	}
