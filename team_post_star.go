@@ -45,11 +45,11 @@ func (c *Client) GetTeamPostStarGazers(teamName string, number int, req *GetTeam
 	return &res, nil
 }
 
-type CreateTeamPostStartRequest struct {
+type CreateTeamPostStarRequest struct {
 	Body *string `json:"body"`
 }
 
-func (c *Client) CreateTeamPostStar(teamName string, postNumber int, req *CreateTeamPostStartRequest) error {
+func (c *Client) CreateTeamPostStar(teamName string, postNumber int, req *CreateTeamPostStarRequest) error {
 	resp, body, errs := c.post(fmt.Sprintf("/v1/teams/%s/posts/%d/star", teamName, postNumber)).Send(req).End()
 	if len(errs) > 0 {
 		return errs[0]

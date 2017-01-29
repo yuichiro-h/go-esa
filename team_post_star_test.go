@@ -19,7 +19,7 @@ func TestGetTeamPostStartgazars(t *testing.T) {
 
 func TestCreateTeamPostStar(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	err := client.CreateTeamPostStar("coto-coto", 2387, &esa.CreateTeamPostStartRequest{
+	err := client.CreateTeamPostStar("coto-coto", 2387, &esa.CreateTeamPostStarRequest{
 		Body: esa.String("go-esa"),
 	})
 	if err != nil {
