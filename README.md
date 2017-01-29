@@ -37,13 +37,13 @@ func main() {
 -	[x] GET /v1/teams/:team_name/comments/:comment_id
 -	[x] POST /v1/teams/:team_name/posts/:post_number/comments
 -	[ ] PATCH /v1/teams/:team_name/comments/:comment_id
--	[ ] DELETE /v1/teams/:team_name/comments/:comment_id Star
+-	[ ] DELETE /v1/teams/:team_name/comments/:comment_id
 -	[x] GET /v1/teams/:team_name/posts/:post_number/stargazers
 -	[x] POST /v1/teams/:team_name/posts/:post_number/star
 -	[ ] DELETE /v1/teams/:team_name/posts/:post_number/star
 -	[x] GET /v1/teams/:team_name/comments/:comment_id/stargazers
--	[ ] POST /v1/teams/:team_name/comments/:comment_id/star
--	[ ] DELETE /v1/teams/:team_name/comments/:comment_id/star Watch
+-	[x] POST /v1/teams/:team_name/comments/:comment_id/star
+-	[ ] DELETE /v1/teams/:team_name/comments/:comment_id/star
 -	[x] GET /v1/teams/:team_name/posts/:post_number/watchers
 -	[ ] POST /v1/teams/:team_name/posts/:post_number/watch
 -	[ ] DELETE /v1/teams/:team_name/posts/:post_number/watch
