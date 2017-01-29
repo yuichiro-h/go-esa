@@ -26,10 +26,9 @@ type GetTeamPostStargazersResponse struct {
 }
 
 func (c *Client) GetTeamPostStarGazers(teamName string, number int, req *GetTeamPostStargazersRequest) (*GetTeamPostStargazersResponse, error) {
-	buildReq := c.get(fmt.Sprintf("/v1/teams/%s/posts/%d/stargazers", teamName, number))
+	r := c.get(fmt.Sprintf("/v1/teams/%s/posts/%d/stargazers", teamName, number))
 
-	resp, body, errs := c.setPaginationParams(buildReq, &req.PaginationRequest).End()
-
+	resp, body, errs := c.setPaginationParams(r, &req.PaginationRequest).End()
 	if len(errs) > 0 {
 		return nil, errs[0]
 	}
@@ -44,4 +43,21 @@ func (c *Client) GetTeamPostStarGazers(teamName string, number int, req *GetTeam
 	}
 
 	return &res, nil
+}
+
+type CreateTeamPostStartRequest struct {
+	Body *string `json:"body"`
+}
+
+func (c *Client) CreateTeamPostStar(teamName string, postNumber int, req *CreateTeamPostStartRequest) error {
+	resp, body, errs := c.post(fmt.Sprintf("/v1/teams/%s/posts/%d/star", teamName, postNumber)).Send(req).End()
+	if len(errs) > 0 {
+		return errs[0]
+	}
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return c.parseError(body)
+	}
+
+	return nil
 }
