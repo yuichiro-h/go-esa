@@ -90,3 +90,36 @@ func (c *Client) CreateTeamPostComment(teamName string, postNumber int, req *Cre
 
 	return &res, nil
 }
+
+type UpdateTeamPostCommentRequest struct {
+	BodyMD string  `json:"body_md"`
+	User   *string `json:"user"`
+}
+
+type UpdateTeamPostCommentResponse struct {
+	Comment
+}
+
+func (c *Client) UpdateTeamPostComment(teamName string, commentID int, req *UpdateTeamPostCommentRequest) (*UpdateTeamPostCommentResponse, error) {
+	resp, body, errs := c.patch(fmt.Sprintf("/v1/teams/%s/comments/%d", teamName, commentID)).
+		Send(&struct {
+			Comment *UpdateTeamPostCommentRequest `json:"comment"`
+		}{
+			Comment: req,
+		}).End()
+
+	if len(errs) > 0 {
+		return nil, errs[0]
+	}
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return nil, c.parseError(body)
+	}
+
+	var res UpdateTeamPostCommentResponse
+	if err := json.Unmarshal([]byte(body), &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}

@@ -36,3 +36,14 @@ func TestGetPostComments(t *testing.T) {
 // 	}
 // 	t.Log(pp.Sprint(res))
 // }
+
+func TestUpdateTeamPostCommentNoError(t *testing.T) {
+	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
+	res, err := client.UpdateTeamPostComment("coto-coto", 235531, &esa.UpdateTeamPostCommentRequest{
+		BodyMD: "updated LGTM!!",
+	})
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(pp.Sprint(res))
+}
