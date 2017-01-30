@@ -25,8 +25,8 @@ type GetTeamPostStargazersResponse struct {
 	PaginationResponse
 }
 
-func (c *Client) GetTeamPostStarGazers(teamName string, number int, req *GetTeamPostStargazersRequest) (*GetTeamPostStargazersResponse, error) {
-	r := c.get(fmt.Sprintf("/v1/teams/%s/posts/%d/stargazers", teamName, number))
+func (c *Client) GetTeamPostStarGazers(teamName string, postNumber int, req *GetTeamPostStargazersRequest) (*GetTeamPostStargazersResponse, error) {
+	r := c.get(fmt.Sprintf("/v1/teams/%s/posts/%d/stargazers", teamName, postNumber))
 
 	resp, body, errs := c.setPaginationParams(r, &req.PaginationRequest).End()
 	if len(errs) > 0 {
