@@ -145,3 +145,50 @@ func (c *Client) CreateTeamPost(teamName string, req *CreateTeamPostRequest) (*C
 
 	return &res, nil
 }
+
+type UpdateTeamPostRequest struct {
+	Name             string            `json:"name"`
+	BodyMD           *string           `json:"body_md"`
+	Tags             *[]string         `json:"tags"`
+	Category         *string           `json:"category"`
+	WIP              bool              `json:"wip"`
+	Message          *string           `json:"message"`
+	CreatedBy        string            `json:"created_by"`
+	UpdatedBy        string            `json:"updated_by"`
+	OriginalRevision *OriginalRevision `json:"original_revision"`
+}
+
+type OriginalRevision struct {
+	BodyMD string `json:"body_md"`
+	Number int    `json:"number"`
+	User   string `json:"user"`
+}
+
+type UpdateTeamPostResponse struct {
+	Post
+	Overlapped *bool `json:"overlapped"`
+}
+
+func (c *Client) UpdateTeamPost(teamName string, postNumber int, req *UpdateTeamPostRequest) (*UpdateTeamPostResponse, error) {
+	resp, body, errs := c.patch(fmt.Sprintf("/v1/teams/%s/posts/%d", teamName, postNumber)).
+		Send(&struct {
+			Post *UpdateTeamPostRequest `json:"post"`
+		}{
+			Post: req,
+		}).End()
+
+	if len(errs) > 0 {
+		return nil, errs[0]
+	}
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return nil, c.parseError(body)
+	}
+
+	var res UpdateTeamPostResponse
+	if err := json.Unmarshal([]byte(body), &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}

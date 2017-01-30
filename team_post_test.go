@@ -10,7 +10,7 @@ import (
 
 func TestGetTeamPostsNoError(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	res, err := client.GetTeamPosts("docs", &esa.GetTeamPostsRequest{
+	res, err := client.GetTeamPosts("coto-coto", &esa.GetTeamPostsRequest{
 		Q:       esa.String("API"),
 		Include: esa.String("comments,stargazers"),
 		PaginationRequest: esa.PaginationRequest{
@@ -26,7 +26,7 @@ func TestGetTeamPostsNoError(t *testing.T) {
 
 func TestGetTeamPostNoError(t *testing.T) {
 	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
-	res, err := client.GetTeamPost("docs", 25)
+	res, err := client.GetTeamPost("coto-coto", 2387)
 	if err != nil {
 		t.Error(err)
 	}
@@ -49,3 +49,17 @@ func TestGetTeamPostNoError(t *testing.T) {
 // 	}
 // 	t.Log(pp.Sprint(res))
 // }
+
+func TestUpdateTeamPostNoError(t *testing.T) {
+	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
+	res, err := client.UpdateTeamPost("coto-coto", 2387, &esa.UpdateTeamPostRequest{
+		Name:      "updated go-esa test post name",
+		WIP:       true,
+		CreatedBy: "esa_bot",
+		UpdatedBy: "esa_bot",
+	})
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(pp.Sprint(res))
+}
