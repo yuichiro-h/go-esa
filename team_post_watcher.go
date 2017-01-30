@@ -42,3 +42,16 @@ func (c *Client) GetTeamPostWatchers(teamName string, postNumber int, req *GetTe
 
 	return &res, nil
 }
+
+func (c *Client) CreateTeamPostWatch(teamName string, postNumber int) error {
+	resp, body, errs := c.post(fmt.Sprintf("/v1/teams/%s/posts/%d/watch", teamName, postNumber)).End()
+	if len(errs) > 0 {
+		return errs[0]
+	}
+
+	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+		return c.parseError(body)
+	}
+
+	return nil
+}

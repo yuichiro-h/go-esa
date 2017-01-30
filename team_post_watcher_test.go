@@ -16,3 +16,11 @@ func TestGetTeamPostWatchersNotError(t *testing.T) {
 	}
 	t.Log(pp.Sprint(res))
 }
+
+func TestCreateTeamPostWatch(t *testing.T) {
+	client := esa.New(&esa.Config{AccessToken: os.Getenv("ESA_ACCESS_TOKEN")})
+	err := client.CreateTeamPostWatch("coto-coto", 2387)
+	if err != nil {
+		t.Error(err)
+	}
+}
